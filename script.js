@@ -16,8 +16,10 @@ generateBtn.addEventListener("click", writePassword);
 //Generate password
 function generatePassword(){
   var length = promptForNumber();
-  var lowCase = lowercasePrompt();
-  var upperCase = uppercasePrompt();
+  var confirmLower = lowercasePrompt();
+  var confirmUpper = uppercasePrompt();
+  var confirmChar = specialCharPrompt();
+  var confirmNumber= numberPrompt();
 }
 
 
@@ -25,7 +27,7 @@ function generatePassword(){
 function promptForNumber(){
   var length = prompt("Enter a number between 8-128");
   if (length >= 8 && length <= 128){
-    alert("Perfect!");
+    alert("Perfect! Your password will have " + length + " characters.");
     return;
   } else if (isNaN(length)){
     alert("That's not a number. Please enter a number from 8-128.");
@@ -37,27 +39,42 @@ function promptForNumber(){
   };
   }
 
-  //finding out if the user wants lower case in their password
-function lowercasePrompt() {
-  var lowCase = confirm("Do you want to include lower case characters?");
-  if (lowCase == true){
-    console.log(lowCase);
-    //do something with the true value 
-  } 
+//Defining parameers 
+function lowercasePrompt() {//shouldn't need to be function but how do i stop them running immediately 
+  var confirmLower = confirm("Do you want to include lower case characters?");
+    console.log(confirmLower);
 }
 
-//findingout if the user wants upper case in their password
 function uppercasePrompt() {
-  var upperCase = confirm("Do you want to include upper case characters?");
-  if (upperCase == true){
-    console.log(upperCaseCase);
-    //do something with the true value 
+  var confirmUpper = confirm("Do you want to include upper case characters?");
+    console.log(confirmUpper);
   } 
-}
+
+function numberPrompt() {
+  var confirmNumber = confirm("Do you want to include number characters?");
+    console.log(confirmNumber);
+  } 
+
+function specialCharPrompt() {
+  var confirmChar = confirm("Do you want to include special characters?");
+    console.log(confirmChar);
+  } 
 
 
+//generating values 
+function getRandomUpperCase(){
+  return String.fromCharCode(Math.floor(Math.random()*26)+65);
+ };
 
+ function getRandomLowerCase(){
+  return String.fromCharCode(Math.floor(Math.random()*26)+97);
+};
 
+function getRandomNumber(){
+  return String.fromCharCode(Math.floor(Math.random()*10)+48);
+};
 
-
-
+function getRandomSymbol(){
+  var symbol = "!@#$%^&*(){}[]=<>/,.|~?";
+  return symbol[Math.floor(Math.random()*symbol.length)];
+};
