@@ -16,7 +16,8 @@ generateBtn.addEventListener("click", writePassword);
 //Generate password
 function generatePassword(){
   var length = promptForNumber();
-
+  var lowCase = lowercasePrompt();
+  var upperCase = uppercasePrompt();
 }
 
 
@@ -35,6 +36,26 @@ function promptForNumber(){
 
   };
   }
+
+  //finding out if the user wants lower case in their password
+function lowercasePrompt() {
+  var lowCase = confirm("Do you want to include lower case characters?");
+  if (lowCase == true){
+    console.log(lowCase);
+    //do something with the true value 
+  } 
+}
+
+//findingout if the user wants upper case in their password
+function uppercasePrompt() {
+  var upperCase = confirm("Do you want to include upper case characters?");
+  if (upperCase == true){
+    console.log(upperCaseCase);
+    //do something with the true value 
+  } 
+}
+
+
 
 
 
