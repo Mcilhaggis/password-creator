@@ -13,14 +13,22 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+
+// Various Arrays 
+var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var specialChar = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
+var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+
 //Generate password
 function generatePassword(){
   var length = promptForNumber();
-  var confirmLower = lowercasePrompt();
-  var confirmUpper = uppercasePrompt();
-  var confirmChar = specialCharPrompt();
-  var confirmNumber= numberPrompt();
-}
+  var confirmLower;
+  var confirmUpper;
+  var confirmChar;
+  var confirmNumber;
+
 
 
 //finding out how many characters the user wants in the password
@@ -39,27 +47,14 @@ function promptForNumber(){
   };
   }
 
-//Defining parameers 
-function lowercasePrompt() {//shouldn't need to be function but how do i stop them running immediately 
+//Defining parameters of password
   var confirmLower = confirm("Do you want to include lower case characters?");
-    console.log(confirmLower);
-}
-
-function uppercasePrompt() {
   var confirmUpper = confirm("Do you want to include upper case characters?");
-    console.log(confirmUpper);
-  } 
-
-function numberPrompt() {
   var confirmNumber = confirm("Do you want to include number characters?");
-    console.log(confirmNumber);
-  } 
-
-function specialCharPrompt() {
   var confirmChar = confirm("Do you want to include special characters?");
-    console.log(confirmChar);
-  } 
+  
 
+}
 
 //generating values 
 function getRandomUpperCase(){
