@@ -63,7 +63,7 @@ var upperCaseChar=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","
 var numericChar=["1","2","3","4","5","6","7","8","9","0"];
 var specialChar=["!","@","#","$","%","^","&","*","(",")","{","}","|","[","]",";","'",":","<",">","?","/"];
 var passwordPool = [];
-
+var randomPassword = [];
 
 
 //loop through chosen options to create a password
@@ -86,12 +86,27 @@ function generateChar(){
 
 
 
+//create an array thats a pool for all selected values from char arrays
 generateChar();
 console.log(passwordPool);
 
 
-//create an array thats a pool for all selected values from char arrays
-  //create a final for loop that math.random.floors the array . the length of pwLength
+//create a final for loop that math.random.floors the array . the length of pwLength
+function pushChar (){
+
+
+for (var i = 0; i <= pwLength; i++){
+  randomPassword.push(passwordPool(i));
+  }
+  return randomPassword;
+}
+
+
+
+pushChar();
+console.log(randomPassword);
+
+
 //at the end validate that all of the conditions were met. 
 
 }
