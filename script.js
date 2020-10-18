@@ -16,7 +16,7 @@ generateBtn.addEventListener("click", writePassword);
 
 //Generate password
 function generatePassword(){
-  var pwLength = promptForNumber();
+  var pwLength;
   var confirmLower;
   var confirmUpper;
   var confirmSpecial
@@ -25,19 +25,14 @@ function generatePassword(){
 
 
 //finding out how many characters the user wants in the password
-function promptForNumber(){
-  var pwLength = prompt("Enter a number between 8-128");
-  if (pwLength >= 8 && length <= 128){
-    alert("Perfect! Your password will have " + pwLength + " characters.");
-    return;
-  } else if (isNaN(length)){
+
+
+  var pwLength = parseInt(prompt("Enter a number between 8-128"));
+  while(pwLength < 8 || length > 128 || pwLength == NaN || pwLength === null){
     alert("That's not a number. Please enter a number from 8-128.");
-    promptForNumber();
-  } else {
-    alert("Your number is not in range.");
-    promptForNumber();
+    pwLength = prompt("Enter a number between 8-128");
   };
-}
+
 
 
 //Defining variables
@@ -57,13 +52,11 @@ while (confirmLower === false && confirmUpper === false && confirmNumber === fal
 
 
 // Various Arrays
-//Should i be usiing a set instead?? 
 var lowerCaseChar=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var upperCaseChar=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var numericChar=["1","2","3","4","5","6","7","8","9","0"];
 var specialChar=["!","@","#","$","%","^","&","*","(",")","{","}","|","[","]",";","'",":","<",">","?","/"];
 var passwordPool = [];
-var randomPassword = [];
 
 
 //loop through chosen options to create a password
@@ -92,11 +85,15 @@ console.log(passwordPool);
 
 
 //create a final for loop that math.random.floors the array . the length of pwLength
+
+var randomPassword = [];
+
 function pushChar (){
 
 
-for (var i = 0; i <= pwLength; i++){
-  randomPassword.push(passwordPool(i));
+for (var i = 0; i < pwLength; i++){
+  var item = passwordPool[Math.floor(Math.random()*passwordPool.length)];
+  randomPassword.push(item);
   }
   return randomPassword;
 }
@@ -105,7 +102,6 @@ for (var i = 0; i <= pwLength; i++){
 
 pushChar();
 console.log(randomPassword);
-
 
 //at the end validate that all of the conditions were met. 
 
