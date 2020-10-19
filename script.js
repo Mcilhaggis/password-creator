@@ -15,20 +15,15 @@ generateBtn.addEventListener("click", writePassword);
 
 //Generate password
 function generatePassword() {
-  var pwLength;
-  var confirmLower;
-  var confirmUpper;
-  var confirmSpecial
-  var confirmNumber;
 
-  //finding out how many characters the user wants in the password
+  //finding out how many characters the user wants in the password with a set range of 8-128
+ 
   var pwLength = parseInt(prompt("Enter a number between 8-128"));
-  while (pwLength < 8 || length > 128 || pwLength == NaN || pwLength === null) {
-    alert("That's not a valid number. Please enter a number from 8-128.");
-    pwLength = prompt("Enter a number between 8-128");
-  };
+   do { alert("That's not a valid number. Please enter a number from 8-128.");
+    pwLength = prompt("Enter a number between 8-128");}
+    while (pwLength < 8 || pwLength > 128 || isNaN(pwLength) || pwLength === null);
 
-  //Defining variables // probably can get rid of the repetion below by putting this into a function?
+  //Defining variables
   var confirmLower = confirm("Do you want to include lower case characters?");
   var confirmUpper = confirm("Do you want to include upper case characters?");
   var confirmNumber = confirm("Do you want to include number characters?");
@@ -43,16 +38,16 @@ function generatePassword() {
     var confirmSpecial = confirm("Do you want to include special characters?");
   }
 
-  // Various Arrays
+  // Various Character Arrays
   var lowerCaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   var upperCaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   var numericChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
   var specialChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "{", "}", "|", "[", "]", ";", "'", ":", "<", ">", "?", "/"];
-  //Array created based on the answers given by the user
+  
+  //Array created based on the answers to prompts by the user
   var passwordPool = [];
 
-
-  //loop through chosen options to create a password
+  //Craeting new array containing the options(arrays) the user chose to include in the password
   function generateChar() {
 
 
@@ -70,11 +65,10 @@ function generatePassword() {
     }
   }
 
-  //create an array thats a pool for all selected values from char arrays
   generateChar();
   console.log(passwordPool);
 
-  //create a final for loop that math.random.floors the array . the length of pwLength that meets the criteriaselected by user
+  //Creates final array out of random characters from the pool that was created by the users option inputs.
   function pushChar() {
   var randomPassword = [];
     for (var i = 0; i < pwLength; i++) {
@@ -106,13 +100,12 @@ function generatePassword() {
       ;
     }*/
 
-
-
 //var validPassword = validatePassword(password);
-return password.join("");
 //console.log(validPassword);
 
 
+//Presents randomly generated password to the user as a string. 
+return password.join("");
 
 
 
