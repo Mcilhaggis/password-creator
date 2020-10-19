@@ -17,11 +17,17 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
 
   //finding out how many characters the user wants in the password with a set range of 8-128
- 
   var pwLength = parseInt(prompt("Enter a number between 8-128"));
-   do { alert("That's not a valid number. Please enter a number from 8-128.");
+  while (pwLength < 7 || pwLength > 129 || isNaN(pwLength) || pwLength === null) {
+    alert("That's not a valid number. Please enter a number from 8-128.");
+    pwLength = prompt("Enter a number between 8-128");
+  }
+  
+
+
+   /*do { alert("That's not a valid number. Please enter a number from 8-128.");
     pwLength = prompt("Enter a number between 8-128");}
-    while (pwLength < 8 || pwLength > 128 || isNaN(pwLength) || pwLength === null);
+    while (pwLength < 7 || pwLength > 129 || isNaN(pwLength) || pwLength === null);*/
 
   //Defining variables
   var confirmLower = confirm("Do you want to include lower case characters?");
