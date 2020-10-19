@@ -28,7 +28,7 @@ function generatePassword() {
     pwLength = prompt("Enter a number between 8-128");
   };
 
-  //Defining variables
+  //Defining variables // probably can get rid of the repetion below by putting this into a function?
   var confirmLower = confirm("Do you want to include lower case characters?");
   var confirmUpper = confirm("Do you want to include upper case characters?");
   var confirmNumber = confirm("Do you want to include number characters?");
@@ -48,8 +48,9 @@ function generatePassword() {
   var upperCaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   var numericChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
   var specialChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "{", "}", "|", "[", "]", ";", "'", ":", "<", ">", "?", "/"];
+  //Array created based on the answers given by the user
   var passwordPool = [];
-  var randomPassword = [];
+
 
   //loop through chosen options to create a password
   function generateChar() {
@@ -75,57 +76,42 @@ function generatePassword() {
 
   //create a final for loop that math.random.floors the array . the length of pwLength that meets the criteriaselected by user
   function pushChar() {
-
+  var randomPassword = [];
     for (var i = 0; i < pwLength; i++) {
       var item = passwordPool[Math.floor(Math.random() * passwordPool.length)];
       randomPassword.push(item);
       }
+      return randomPassword;
     }
   
-    pushChar();
+    var password = pushChar();
  
     //validate that all of the conditions were met. 
 
 
-function upperCheck() {
-    if (randomPassword.includes(upperCaseChar)){
-      valid = true;
-      confirmUpper !== valid;
-      console.log(uppercheck);
-      pushChar();
-    }
-  }
-  function lowerCheck() {
-    if (randomPassword.includes(lowerCaseChar)){
-      valid = true,
-      confirmLower !== valid,
-      pushChar();
-    }
-  }
-  function specialCheck() {
-    if (randomPassword.includes(specialChar)){
-      valid = true,
-      confirmSpecial !== valid,
-      pushChar();
-    }
-  }
-  function numberCheck() {
-    if (randomPassword.includes(numericChar)){
-      valid = true,
-      confirmNumber !== valid,
-      pushChar();
-    }
-  }
-
-
-upperCheck();
-lowerCheck();
-specialCheck();
-numberCheck();
+    /*function validatePassword(password) {
+      var valid = false
+      for (let i = 0; i < upperCaseChar.length; i++) {
+        const char = upperCaseChar[i];
+        if (password.includes(char)){
+          valid = true
+          continue
+        }
+        
+      }
+      password.includes(upperCaseChar) === confirmUpper &&
+      password.includes(lowerCaseChar) === confirmLower &&
+      password.includes(specialChar) === confirmSpecial &&
+      password.includes(numericChar) === confirmNumber
+      ;
+    }*/
 
 
 
-console.log(randomPassword);
+//var validPassword = validatePassword(password);
+return password.join("");
+//console.log(validPassword);
+
 
 
 
