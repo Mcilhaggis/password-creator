@@ -11,7 +11,7 @@ This password generator project is built using **HTML, CSS, and Javascript**. Th
 
 
 ### Screenshots
-![Screenshot of the Password Generator.](sceenshot.png "Screenshot of the Password Generator.")
+![Screenshot of the Password Generator.](https://github.com/Mcilhaggis/password-creator/blob/main/Screenshot.png "Screenshot of the Password Generator.")
 
 ## URL
 The live project can be viewed here: https://mcilhaggis.github.io/password-creator/
