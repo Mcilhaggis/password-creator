@@ -1,6 +1,5 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
 // Write password to the #password input
 function writePassword() {
     var password = generatePassword();
@@ -61,7 +60,6 @@ function generateChar() {
     }
 }
     generateChar();
-    console.log(passwordPool);
 
    //Creates final array out of random characters from the pool that was created by the users option inputs.
     function pushChar() {
@@ -72,33 +70,26 @@ function generateChar() {
     }
     return randomPassword;
 }
-var password = pushChar();
-
 
 //validate that all of the conditions were met.
 
-var checkUpper = (upperCaseChar.some(ele => password.includes(ele)))
-var checkLower = (lowerCaseChar.some(ele => password.includes(ele)))
-var checkNumeric = (numericChar.some(ele => password.includes(ele)))
-var checkSpecial = (specialChar.some(ele => password.includes(ele)))
+function checkPassword(password){
+  var checkUpper = (upperCaseChar.some(ele => password.includes(ele)))
+  var checkLower = (lowerCaseChar.some(ele => password.includes(ele)))
+  var checkNumeric = (numericChar.some(ele => password.includes(ele)))
+  var checkSpecial = (specialChar.some(ele => password.includes(ele)))
 
-console.log(checkUpper);
-console.log(checkLower);
-console.log(checkNumeric);
-console.log(checkSpecial);
-
-
-if (checkUpper === confirmUpper &&
+  return checkUpper === confirmUpper &&
     checkLower === confirmLower &&
     checkNumeric === confirmSpecial &&
-    checkSpecial === confirmNumber) {
-    console.log(password);
-} else {
-        alert("somethings missing");
-        console.log(pushChar()); //why won't this run??
+    checkSpecial === confirmNumber;  
 }
 
-
+//If the requirements don't meet the user requests, regenerate until it does. 
+let password = [];
+while (!checkPassword(password)){
+  password = pushChar();
+}
 
 //Presents randomly generated password to the user as a string. 
   return password.join("");
