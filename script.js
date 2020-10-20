@@ -10,7 +10,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-//Generate password
+//Generate password function encompassing all internal functions and actions
 function generatePassword() {
 
 //finding out how many characters the user wants in the password with a set range of 8-128
@@ -20,7 +20,7 @@ var pwLength = parseInt(prompt("Enter a number between 8-128"));
       pwLength = prompt("Enter a number between 8-128");
 }
 
-//Defining variables
+//Defining variables to start as false for character requirements, ready to be set below.
 var confirmLower = false;
 var confirmUpper = false;
 var confirmNumber = false;
@@ -40,7 +40,6 @@ var lowerCaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
 var upperCaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numericChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 var specialChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "{", "}", "|", "[", "]", ";", "'", ":", "<", ">", "?", "/"];
-
 //Array created based on the answers to prompts by the user
 var passwordPool = [];
 
@@ -61,7 +60,7 @@ function generateChar() {
 }
     generateChar();
 
-   //Creates final array out of random characters from the pool that was created by the users option inputs.
+//Creates one final array out of random characters from the passwordPool that was created by the users option inputs.
     function pushChar() {
         var randomPassword = [];
         for (var i = 0; i < pwLength; i++) {
@@ -71,8 +70,7 @@ function generateChar() {
     return randomPassword;
 }
 
-//validate that all of the conditions were met.
-
+//validate that all of the conditions the user asked for were met.
 function checkPassword(password){
   var checkUpper = (upperCaseChar.some(ele => password.includes(ele)))
   var checkLower = (lowerCaseChar.some(ele => password.includes(ele)))
